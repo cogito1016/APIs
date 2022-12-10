@@ -16,6 +16,12 @@ API API API A P I AA PP II
 - ex) /jayden/api/v1/movies
 - URL을 요청하는것을 허용해야 함
 - 거의 모든곳에서 호출할 수 있다 (브라우저, 언어, 모바일기기 등..)
+- 매우 직관적이고 쉽다.
+
+#### HTTP 메소드와 Rest API의 결합
+- /jayden/api/v1/movies/create ? (X)
+- /jayden/api/v1/movies + HTTP Post Method  (O)
+- 동작은 HTTP메서드에 의존한다. Get Post Put Patch Delete
 
 
 
