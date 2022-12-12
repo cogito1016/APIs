@@ -50,6 +50,14 @@ API API API A P I AA PP II
 - - -
 ### GraphQL API
 
+#### 
+
+- - -
+#### PostGraPhile
+- GraphQL API를 얻을 수 있다.
+
+#### Hasura
+- 데이터베이스에서 즉각적으로 GraphQL API를 무료로 만들어줌
 
 #### Swapi-GraphQL 
 - GraphQL API 체험 툴
@@ -117,10 +125,15 @@ filmID: ID
 }
 ```
 - 위의 데이터가 출력된다
-- - -
-#### PostGraPhile
-- GraphQL API를 얻을 수 있다.
 
-#### Hasura
-- 데이터베이스에서 즉각적으로 GraphQL API를 무료로 만들어줌
+#### Apolo
+- 오픈소스 서버 (nodejs)
+- graphQL을 이해하는 서버, GraphQL 스펙을 이해한다.
+- rest로 이루어진 express를 graphql로 바꿔주는것도 쉽다. 미들웨어만 추가시켜주면 됨
 
+###### set-up
+1. npm init -y 
+2. npm install apollo-server graphql 
+3. npm install nodemon -D
+4. package.json > "type" : "module" 추가
+5. server.js > import {apolloserver, gql} 추가
