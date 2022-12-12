@@ -47,8 +47,76 @@ API API API A P I AA PP II
 
 - 결론적으로 여러 URL을 호출할 필요가 없음.
 
+- - -
+### GraphQL API
 
 
+#### Swapi-GraphQL 
+- GraphQL API 체험 툴
+- https://graphql.org/swapi-graphql
+- browser tool
+- Docs > root > 내가 요청할 수 있는 데이터 확인 가능
+```graphql
+allFilms(
+after: String
+first: Int
+before: String
+last: Int
+): FilmsConnection
+film(
+id: ID
+filmID: ID
+): Film
+```
+- 위와같은 데이터가 있을 때 
+```graphql 
+{
+  allFilms{
+    totalCount
+    films{
+      title
+      director
+    }
+  }
+}
+```
+- 위처럼 요청하면
+```json
+{
+  "data": {
+    "allFilms": {
+      "totalCount": 6,
+      "films": [
+        {
+          "title": "A New Hope",
+          "director": "George Lucas"
+        },
+        {
+          "title": "The Empire Strikes Back",
+          "director": "Irvin Kershner"
+        },
+        {
+          "title": "Return of the Jedi",
+          "director": "Richard Marquand"
+        },
+        {
+          "title": "The Phantom Menace",
+          "director": "George Lucas"
+        },
+        {
+          "title": "Attack of the Clones",
+          "director": "George Lucas"
+        },
+        {
+          "title": "Revenge of the Sith",
+          "director": "George Lucas"
+        }
+      ]
+    }
+  }
+}
+```
+- 위의 데이터가 출력된다
 - - -
 #### PostGraPhile
 - GraphQL API를 얻을 수 있다.
