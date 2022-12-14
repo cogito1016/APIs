@@ -50,7 +50,43 @@ API API API A P I AA PP II
 - - -
 ### GraphQL API
 
-#### 
+#### Apolo
+- 오픈소스 서버 (nodejs)
+- graphQL을 이해하는 서버, GraphQL 스펙을 이해한다.
+- rest로 이루어진 express를 graphql로 바꿔주는것도 쉽다. 미들웨어만 추가시켜주면 됨
+
+###### set-up
+1. npm init -y 
+2. npm install apollo-server graphql 
+3. npm install nodemon -D
+4. package.json > "type" : "module" 추가
+- 아래처럼 Import로 추가하기위한 설정이다.
+5. server.js > import {apolloserver, gql} 추가
+5. npm run dev
+
+
+###### 우리가 쓸 Data의 Shape에 대해 Server에 설명해줘야한다.
+- 스키마
+- SwapiGraphQL의 Docs부분에 아래의 부분이 있는 이유이다.
+```
+A GraphQL schema provides a root type for each kind of operation.
+
+Root Types
+query: Root
+```
+
+##### GraphQL Schema Definition Language
+```javascript
+const typeDefs = gql`
+    type Query{
+        text: String
+        hello:String
+    }
+`;
+```
+- 위는 Get /text, /hello랑 같다.
+- Request가 되는 뭐든 데이터들은 type Query에 정의되어있어야한다.
+
 
 - - -
 #### PostGraPhile
@@ -125,15 +161,3 @@ filmID: ID
 }
 ```
 - 위의 데이터가 출력된다
-
-#### Apolo
-- 오픈소스 서버 (nodejs)
-- graphQL을 이해하는 서버, GraphQL 스펙을 이해한다.
-- rest로 이루어진 express를 graphql로 바꿔주는것도 쉽다. 미들웨어만 추가시켜주면 됨
-
-###### set-up
-1. npm init -y 
-2. npm install apollo-server graphql 
-3. npm install nodemon -D
-4. package.json > "type" : "module" 추가
-5. server.js > import {apolloserver, gql} 추가
