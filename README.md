@@ -139,6 +139,19 @@ const typeDefs = gql`
 ```
 - 사용자가 Post Delete Put하고싶어하는건 뭐든 Mutation type에 있어야한다.
 
+###### Non Nullable Fields ( ! Keyword )
+- 기본적으로 Nullable Field이다.
+- 즉, Tweet 이라면, Tweet이 될 수 있고 Null이 될 수 있다.
+- String, Boolean, Integer 모두 마찬가지.
+```javascript
+    type Query{
+        allTweets: [Tweet!]!
+        tweet(id:ID!): Tweet!
+    }
+```
+- allTweets을 요청하면 무조건 리스트를 반환하며, 리스트에는 무조건 트윗이 있다.
+- twwet을 요청하기위해서는 id가 무조건 필요하며, 무조건 트윗을 반환한다.
+
 - - -
 #### PostGraPhile
 - GraphQL API를 얻을 수 있다.
