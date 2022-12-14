@@ -62,8 +62,9 @@ API API API A P I AA PP II
 4. package.json > "type" : "module" 추가
 - 아래처럼 Import로 추가하기위한 설정이다.
 5. server.js > import {apolloserver, gql} 추가
-5. npm run dev
-
+6. npm run dev
+7. SDL정의 안해두면 오류나요~
+8. http://localhost:4000/
 
 ###### 우리가 쓸 Data의 Shape에 대해 Server에 설명해줘야한다.
 - 스키마
@@ -86,7 +87,32 @@ const typeDefs = gql`
 ```
 - 위는 Get /text, /hello랑 같다.
 - Request가 되는 뭐든 데이터들은 type Query에 정의되어있어야한다.
+- localhost:4000 들어가면 정의한 SDL의 Documentation을 볼 수 있다.
 
+##### Scalar Type
+- Build in graphql 
+- 필드의 타입
+```javascript
+const typeDefs = gql`
+    type User {
+    id: ID
+    username: String
+    }
+
+    type Tweet {
+    id: ID
+    text: String
+    author: User
+    }
+
+    type Query{
+        allTweets: [Tweet]
+        tweet(id:ID): Tweet
+    }
+`;
+```
+- [Tweet] > Tweet타입의 배열을 뜻함
+- tweet(id:ID) > id를 인자로 받음을 뜻함
 
 - - -
 #### PostGraPhile
@@ -94,6 +120,10 @@ const typeDefs = gql`
 
 #### Hasura
 - 데이터베이스에서 즉각적으로 GraphQL API를 무료로 만들어줌
+
+#### VScode Extension - Apollo GraphQL
+- gql 템플릿 syntax-highligh
+- 등
 
 #### Swapi-GraphQL 
 - GraphQL API 체험 툴
