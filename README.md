@@ -89,9 +89,11 @@ const typeDefs = gql`
 - Request가 되는 뭐든 데이터들은 type Query에 정의되어있어야한다.
 - localhost:4000 들어가면 정의한 SDL의 Documentation을 볼 수 있다.
 
-##### Scalar Type
+###### Scalar Type
 - Build in graphql 
-- 필드의 타입
+- SDL 필드의 타입
+
+###### QueryType
 ```javascript
 const typeDefs = gql`
     type User {
@@ -111,8 +113,31 @@ const typeDefs = gql`
     }
 `;
 ```
+- 사용자가 Get하고싶어하는건 뭐든 Query type에 있어야한다. 
 - [Tweet] > Tweet타입의 배열을 뜻함
 - tweet(id:ID) > id를 인자로 받음을 뜻함
+
+###### MutationType
+```javascript
+const typeDefs = gql`
+    type User {
+    id: ID
+    username: String
+    }
+
+    type Tweet {
+    id: ID
+    text: String
+    author: User
+    }
+
+    type Mutation{
+        postTweet(text:String, userId:ID):Tweet
+        deleteTweet(id:ID):Boolean
+    }
+`;
+```
+- 사용자가 Post Delete Put하고싶어하는건 뭐든 Mutation type에 있어야한다.
 
 - - -
 #### PostGraPhile
