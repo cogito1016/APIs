@@ -236,3 +236,24 @@ filmID: ID
 
 1. 누군가 QueryType에 있는 Tweet Field를 요청하면
 2. apollo server는 resolvers의 queryType의 tweet function을 호출한다.
+
+- 파라미터는 기본적으로 (root, args)로 구성된다.
+- root는 기본
+- args는 넘겨주는 인수들이 포함된다.
+```javascript
+const resolvers = {
+    Query:{
+        tweet(root, args){
+            const id = args.id;
+            const tweet  = tweets.find((tweet)=>tweet.id===parseInt(id));
+            return tweet;
+        },
+        ping(){
+            return "pong";
+        },
+        allTweets(){
+            return tweets;
+        }
+    }
+}
+```

@@ -1,5 +1,14 @@
 import { ApolloServer, gql } from "apollo-server";
 
+const user = {id:1,username:"kim",firstname:"jaehyeong",lastname:"kim"};
+
+const tweets = [
+    {id:1, text:"Hello WOrld", author:user},
+    {id:2, text:"Why", author:user},
+    {id:3, text:"what are youdoing", author:user},
+    {id:4, text:"war never war", author:user}
+]
+
 //SDL
 const typeDefs = gql`
     type User {
@@ -38,12 +47,16 @@ const typeDefs = gql`
 
 const resolvers = {
     Query:{
-        tweet(){
-            console.log("I'm called")
-            return null;
+        tweet(root, args){
+            const id = args.id;
+            const tweet  = tweets.find((tweet)=>tweet.id===parseInt(id));
+            return tweet;
         },
         ping(){
             return "pong";
+        },
+        allTweets(){
+            return tweets;
         }
     }
 }
