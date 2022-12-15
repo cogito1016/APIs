@@ -18,6 +18,7 @@ const typeDefs = gql`
     type Query{
         allTweets: [Tweet!]!
         tweet(id:ID!): Tweet
+        ping: String!
     }
 
     type Mutation{
@@ -35,7 +36,19 @@ const typeDefs = gql`
 // Post Delete Put /api/v1/tweet
 // 사용자가 Post Delete Put하고싶어하는건 뭐든 Mutation type에 있어야한다.
 
-const server = new ApolloServer({typeDefs});
+const resolvers = {
+    Query:{
+        tweet(){
+            console.log("I'm called")
+            return null;
+        },
+        ping(){
+            return "pong";
+        }
+    }
+}
+
+const server = new ApolloServer({typeDefs, resolvers});
 
 server.listen()
 .then(({url})=>{

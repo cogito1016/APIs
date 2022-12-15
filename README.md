@@ -229,3 +229,10 @@ filmID: ID
 }
 ```
 - 위의 데이터가 출력된다
+
+- - -
+#### 이제 코드를 작성할 것
+- 원하는 언어로 진행
+
+1. 누군가 QueryType에 있는 Tweet Field를 요청하면
+2. apollo server는 resolvers의 queryType의 tweet function을 호출한다.
