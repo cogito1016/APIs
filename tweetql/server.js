@@ -2,11 +2,11 @@ import { ApolloServer, gql } from "apollo-server";
 
 const user = {id:1,username:"kim",firstname:"jaehyeong",lastname:"kim"};
 
-const tweets = [
-    {id:1, text:"Hello WOrld", author:user},
-    {id:2, text:"Why", author:user},
-    {id:3, text:"what are youdoing", author:user},
-    {id:4, text:"war never war", author:user}
+let tweets = [
+    {id:"1", text:"Hello WOrld", author:user},
+    {id:"2", text:"Why", author:user},
+    {id:"3", text:"what are youdoing", author:user},
+    {id:"4", text:"war never war", author:user}
 ]
 
 //SDL
@@ -21,7 +21,7 @@ const typeDefs = gql`
     type Tweet {
     id: ID!
     text: String!
-    author: User!
+    author: User
     }
 
     type Query{
@@ -57,6 +57,23 @@ const resolvers = {
         },
         allTweets(){
             return tweets;
+        }
+    },
+    Mutation:{
+        postTweet(_, {text, userId}){
+            const tweet = {id:tweets.length+1, text:text , author:null};
+            tweets.push(tweet);
+            return tweet;
+        },
+        deleteTweet(_, {id}){
+            const isFind = tweets.find((tweet)=>tweet.id===id);
+             
+            if(!isFind){
+                return false;
+            }
+
+            tweets = tweets.filter((tweet)=>tweet.id!==id);
+            return true;
         }
     }
 }

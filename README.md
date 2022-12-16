@@ -234,6 +234,7 @@ filmID: ID
 #### 이제 코드를 작성할 것
 - 원하는 언어로 진행
 
+##### Resolver
 1. 누군가 QueryType에 있는 Tweet Field를 요청하면
 2. apollo server는 resolvers의 queryType의 tweet function을 호출한다.
 
@@ -254,6 +255,24 @@ const resolvers = {
         allTweets(){
             return tweets;
         }
+    },
+    Mutation:{
+        postTweet(_, {text, userId}){
+            const tweet = {id:tweets.length+1, text:text , author:null};
+            tweets.push(tweet);
+            return tweet;
+        },
+        deleteTweet(_, {id}){
+            const isFind = tweets.find((tweet)=>tweet.id===id);
+             
+            if(!isFind){
+                return false;
+            }
+
+            tweets = tweets.filter((tweet)=>tweet.id!==id);
+            return true;
+        }
     }
 }
 ```
+
